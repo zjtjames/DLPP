@@ -38,7 +38,7 @@ PRPredict运行时，先从MongoDB中获取pr数据，并拿到计算好的特�
 
 ### clf方法工作流程
 如果要跑PRPredict，只需要运行```clf.py```文件的main方法，并根据需求传入不同的参数，代码中已做了详细注释。main方法调用run_monthly方法，该方法为核心部分。  
-run_monthly一运行，首先会调用LoadData.py中的load_data_monthly方法加载整个数据集，并返回data_dict（这是一个字典，键是组织名，值为每个组织数据集的迭代器）以及pullinfo_list_dict(这也是一个字典，键为组织名，职位每个组织的所有pr列表)  
+run_monthly一运行，首先会调用LoadData.py中的load_data_monthly方法加载整个数据集，并返回data_dict（这是一个字典，键是组织名，值为每个组织数据集的迭代器）以及pullinfo_list_dict(这也是一个字典，键为组织名，值为每个组织的所有pr列表)  
 之后对每个项目分别进行计算，并在计算完成后在console中打印结果。计算方法为，首先拿到第一轮的数据作为训练集，然后在迭代器中不断的生成下一批数据作为预测集，  
 并利用训练好的模型进行预测，预测完成后将测试集加入训练集，并重新训练模型。
 
